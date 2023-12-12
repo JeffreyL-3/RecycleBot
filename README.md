@@ -13,3 +13,4 @@ pip install Flask requests Werkzeug
 - Saves inputs for future use
 - Minimal conflicts with GPT moderation
 - Support for jpg and png images
+- Popup sidebar menu
