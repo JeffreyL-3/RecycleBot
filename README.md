@@ -10,11 +10,11 @@ Note: using a .jpg or .png image is recommended. Limited file conversion is impl
     - Windows: ```openai-env\Scripts\activate```
     - Mac: ```source openai-env/bin/activate```
 - Install dependencies
-  - Run ```pip install --upgrade openaiFlask requests Werkzeug```
+  - Run ```pip install --upgrade openai Flask requests Werkzeug```
 - Run app.py to load Recycle_Bot!
 
 ## RecycleBot Features
-- Custom location
+- Customizable location
 - Customizable personality with high accuracy (even with absurd or malicious inputs)
 - GUI API key input
 - Saves API key and settings
