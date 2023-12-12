@@ -5,7 +5,7 @@ Note: using a .jpg or .png image is recommended. Limited file conversion is impl
 
 ## Setup
 - Setup a virtual environment
-  - Run '''python -m venv openai-env''' in the main directory
+  - Run ```python -m venv openai-env``` in the main directory
 - Run the following to install dependencies:
   - pip install Flask requests Werkzeug
 - Run app.py
