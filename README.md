@@ -4,18 +4,20 @@ Learn how to recycle anything! Upload an image, add a location and personality, 
 Note: using a .jpg or .png image is recommended. Limited file conversion is implemented, but not all file types are supported.
 
 ## Setup
-Run the following to install dependencies:
-pip install Flask requests Werkzeug
+- Run the following to install dependencies:
+- - pip install Flask requests Werkzeug
+- Run app.py
 
 ## RecycleBot Features
-- Supports custom location
-- Customizable personality with high accuracy (even with absurd settings)
+- Custom location
+- Customizable personality with high accuracy (even with absurd or malicious inputs)
 - GUI API key input
-- Saves settings for future use
-- Dynamic prompt template, enabling recycle checks without hardcoded default settings
+- Saves API key and settings
+- Robust hand-crafted prompt, keeping responses concise and helpful with minimal moderation conflicts
+- Dynamic prompting template, avoiding hardcoded settings
 - Support for .jpg and .png images
-- Popup sidebar menu for settings input
 - Token optimization with vision API
-- Minimal conflicts with GPT moderation
+- Popup sidebar menu for settings input
+- Simple prompt protection against malicious settings
 - Limited error handling
 - Debugging and cost quantification system enabling token and cost tracking (currently unused to avoid cluttering the UI)
