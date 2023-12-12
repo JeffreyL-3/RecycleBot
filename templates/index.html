@@ -40,6 +40,20 @@
             cursor: pointer; /* Add cursor style */
             display: inline-block;
         }
+     
+        label.custom-file-upload:hover {
+            background-color: #444; /* Slightly darker background on hover */
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.1); /* More subtle glow */
+            transition: background-color 0.1s, box-shadow 0.1s; /* Smooth transition for the hover effect */
+        }
+
+        button:hover {
+            background-color: #444; /* Slightly darker background on hover */
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.1); /* More subtle glow */
+            transition: background-color 0.1s, box-shadow 0.1s; /* Smooth transition for the hover effect */
+        }
+        
+
         input[type="text"] {
             width: 300px;
         }
@@ -84,6 +98,13 @@
             left: 30px; /* Adjust position as necessary */
             z-index: 2; /* Ensure it's above other elements */
         }
+
+        .hamburger:hover {
+            background-color: #444; /* Slightly darker background on hover */
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.1); /* More subtle glow */
+            transition: background-color 0.1s, box-shadow 0.1s; /* Smooth transition for the hover effect */
+        }
+
         .flex-container {
             display: flex;
             width: 100%;
@@ -107,6 +128,9 @@
 <body>
 
     <div class="hamburger" onclick="toggleNav()">☰</div>
+    <button style="position: fixed; top: 20px; left: 100px; z-index: 2;" onclick="clearData()">Clear Data</button>
+    <!-- Updated banner position to appear next to the button -->
+    <div id="clearedBanner" style="display: none; position: fixed; top: 25px; left: 270px; z-index: 2; background-color: #393; color: white; padding: 10px; border-radius: 5px;">Cleared!</div>
 
     <div class="flex-container">
         <div class="sidebar" id="mySidebar">
@@ -166,6 +190,15 @@
             formData.append('personality', document.getElementById('personality').value);
             formData.append('api_key', document.getElementById('api_key').value); // Append the API key
 
+            var apiKey = document.getElementById('api_key').value;
+            localStorage.setItem('api_key', apiKey);
+            var save_town = document.getElementById('town').value;
+            localStorage.setItem('town', save_town);
+            var save_state = document.getElementById('state').value;
+            localStorage.setItem('state', save_state);
+            var save_personality = document.getElementById('personality').value;
+            localStorage.setItem('personality', save_personality);
+
             var xhr = new XMLHttpRequest();
             xhr.open('POST', '/process', true);
             xhr.onreadystatechange = function () {
@@ -212,15 +245,64 @@
             button.innerHTML = 'Check';
         }
     
+        function retrieveLocalStorageData() {
+            // Retrieve each value from localStorage and set it to the corresponding input field
+            var apiKey = localStorage.getItem('api_key');
+            if (apiKey) {
+                document.getElementById('api_key').value = apiKey;
+            }
+        
+            var town = localStorage.getItem('town');
+            if (town) {
+                document.getElementById('town').value = town;
+            }
+        
+            var state = localStorage.getItem('state');
+            if (state) {
+                document.getElementById('state').value = state;
+            }
+        
+            var personality = localStorage.getItem('personality');
+            if (personality) {
+                document.getElementById('personality').value = personality;
+            }
+        }
+        
+        
         window.onload = function() {
+            var savedApiKey = localStorage.getItem('api_key');
+            if (savedApiKey) {
+                document.getElementById('api_key').value = savedApiKey;
+            }
             var sidebar = document.getElementById("mySidebar");
-            // Set the initial state
             sidebar.style.bottom = "0px"; // Or "0px" if you want it to be open initially
-            // Check if the result is loaded
-            if (document.getElementById('result')) { // Assuming you have an element with id="result" where results are shown
+            if (document.getElementById('result')) {
                 stopLoading();
             }
+        
+            retrieveLocalStorageData(); // Retrieve and display localStorage data on window load
         };
+
+        function clearData() {
+            localStorage.removeItem('api_key');
+            localStorage.removeItem('town');
+            localStorage.removeItem('state');
+            localStorage.removeItem('personality');
+
+            document.getElementById('api_key').value = '';
+            document.getElementById('town').value = ''; // Also clear the input field
+            document.getElementById('state').value = '';
+            document.getElementById('personality').value = '';
+
+            // Show the cleared banner
+            var banner = document.getElementById('clearedBanner');
+            banner.style.display = 'block';
+
+            // Hide the banner after a few seconds
+            setTimeout(function() {
+                banner.style.display = 'none';
+            }, 3000); // Adjust the time as needed
+        }
     </script>
     
 </body>
