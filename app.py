@@ -48,8 +48,8 @@ def process():
         api_key = request.form.get('api_key')
         key.setKey(api_key)
                    
-        town = request.form.get('town', 'Dedham')
-        state = request.form.get('state', 'Massachusetts')
+        town = request.form.get('town', '')
+        state = request.form.get('state', '')
         object = request.form.get('object', 'object')
         personality = request.form.get('personality', 'a recycling expert')
 

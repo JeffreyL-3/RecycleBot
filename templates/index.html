@@ -4,7 +4,7 @@
     <link href="https://fonts.cdnfonts.com/css/aquire" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet">
                 
-    <title> RecycleBot </title>
+    <title> Recycle_Bot </title>
     <style>
         body {
             display: flex;
@@ -136,16 +136,16 @@
         <div class="sidebar" id="mySidebar">
             <form action="/" method="post" enctype="multipart/form-data">
                 <input type="text" name="api_key" id="api_key" required placeholder="API Key (required)"><br>
-                <input type="text" name="town" id="town" required placeholder="Town"><br>
-                <input type="text" name="state" id="state" required placeholder="State"><br>
-                <input type="text" name="object" id="object" required placeholder="Object"><br>
-                <input type="text" name="personality" id="personality" placeholder="Personality (optional)"><br>
+                <input type="text" name="town" id="town" required placeholder="Town" maxlength="50"><br>
+                <input type="text" name="state" id="state" required placeholder="State" maxlength="30"><br>
+                <input type="text" name="object" id="object" required placeholder="Object" maxlength="30"><br>
+                <input type="text" name="personality" id="personality" placeholder="Personality" maxlength="30"><br>
             </form>
         </div>
     </div>
 
     <div class="container">
-        <h1>RecycleBot</h1>
+        <h1>Recycle_Bot</h1>
 
         <!-- Moved upload and check button here -->
         <form action="/" method="post" enctype="multipart/form-data">
