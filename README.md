@@ -6,8 +6,11 @@ Note: using a .jpg or .png image is recommended. Limited file conversion is impl
 ## Setup
 - Setup a virtual environment
   - Run ```python -m venv openai-env``` in the main directory
+  - Then activate:
+    - Windows: ```openai-env\Scripts\activate```
+    - Mac: ```source openai-env/bin/activate```
 - Install dependencies
-  - Run ```pip install Flask requests Werkzeug```
+  - Run ```pip install --upgrade openaiFlask requests Werkzeug```
 - Run app.py
 
 ## RecycleBot Features
