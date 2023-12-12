@@ -1,4 +1,4 @@
-# RecycleBot
+# Recycle_Bot
 Learn how to recycle anything! Upload an image, add a location and personality, and get your response straight from GPT. A valid OpenAI api key is required.
 
 Note: using a .jpg or .png image is recommended. Limited file conversion is implemented, but not all file types are supported.
@@ -6,12 +6,12 @@ Note: using a .jpg or .png image is recommended. Limited file conversion is impl
 ## Setup
 - Setup a virtual environment
   - Run ```python -m venv openai-env``` in the main directory
-  - Then activate:
+- After you've created a virtual environment, activate it with one of the following
     - Windows: ```openai-env\Scripts\activate```
     - Mac: ```source openai-env/bin/activate```
 - Install dependencies
   - Run ```pip install --upgrade openaiFlask requests Werkzeug```
-- Run app.py
+- Run app.py to load Recycle_Bot!
 
 ## RecycleBot Features
 - Custom location
