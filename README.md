@@ -5,7 +5,7 @@ Note: using a .jpg or .png image is recommended. Limited file conversion is impl
 
 ## Setup
 - Run the following to install dependencies:
-- - pip install Flask requests Werkzeug
+  - pip install Flask requests Werkzeug
 - Run app.py
 
 ## RecycleBot Features
