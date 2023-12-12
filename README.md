@@ -3,11 +3,11 @@ Learn how to recycle anything! Upload an image, add a location and personality, 
 
 Note: using a jpg file is recommended. Other file types may not upload correctly.
 
-# Setup
+## Setup
 Run the following to install dependencies:
 pip install Flask requests Werkzeug
 
-# RecycleBot Features
+## RecycleBot Features
 - Adding location and personality
 - GUI api key input
 - Saves inputs for future use
