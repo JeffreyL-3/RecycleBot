@@ -6,3 +6,9 @@ Note: using a jpg file is recommended. Other file types may not upload correctly
 # Setup
 Run the following to install dependencies:
 pip install Flask requests Werkzeug
+
+# RecycleBot Features
+- Adding location and personality
+- GUI api key input
+- Saves inputs for future use
+- Minimal conflicts with GPT moderation
