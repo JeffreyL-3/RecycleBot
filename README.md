@@ -17,3 +17,5 @@ pip install Flask requests Werkzeug
 - Popup sidebar menu for settings input
 - Token optimization with vision API
 - Minimal conflicts with GPT moderation
+- Limited error handling
+- Debugging and cost quantification system enabling token and cost tracking (currently unused to avoid cluttering the UI)
