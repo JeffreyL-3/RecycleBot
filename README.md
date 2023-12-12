@@ -9,7 +9,7 @@ pip install Flask requests Werkzeug
 
 ## RecycleBot Features
 - Supports custom location
-- Customizable personality with continued accuracy
+- Customizable personality with high accuracy (even with absurd settings)
 - GUI API key input
 - Saves settings for future use
 - Dynamic prompt template, enabling recycle checks without hardcoded default settings
