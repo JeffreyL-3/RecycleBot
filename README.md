@@ -8,9 +8,12 @@ Run the following to install dependencies:
 pip install Flask requests Werkzeug
 
 ## RecycleBot Features
-- Adding location and personality
-- GUI api key input
-- Saves inputs for future use
+- Supports custom location
+- Customizable personality with continued accuracy
+- GUI API key input
+- Saves settings for future use
+- Dynamic prompt template, enabling recycle checks without hardcoded default settings
+- Support for .jpg and .png images
+- Popup sidebar menu for settings input
+- Token optimization with vision API
 - Minimal conflicts with GPT moderation
-- Support for jpg and png images
-- Popup sidebar menu
