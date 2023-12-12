@@ -7,7 +7,7 @@ import shutil
 
 app = Flask(__name__)
 
-# Configure f folder and allowed extensions
+# Configure folder and allowed extensions
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -26,11 +26,12 @@ def empty_folder(folder_path):
         except Exception as e:
             print('Failed to delete %s. Reason: %s' % (file_path, e))
 
-
+# Initial page
 @app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
 
+#Dynamic page updates
 @app.route('/process', methods=['POST'])
 def process():
     empty_folder(app.config['UPLOAD_FOLDER'])
