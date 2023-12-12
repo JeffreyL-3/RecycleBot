@@ -5,4 +5,5 @@ Note: using a jpg file is recommended. Other file types may not upload correctly
 
 # Setup
 Run:
+
 pip install Flask requests Werkzeug
