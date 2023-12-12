@@ -162,11 +162,18 @@
     </div>
 
     <script>
-        function toggleNav(specialClose = false) {
+        function toggleNav(special = 0) {
             var sidebar = document.getElementById("mySidebar");
-            if (specialClose) {
+            //Special close
+            if (special==1) {
                 sidebar.style.bottom = "-300px"; // Hide the sidebar
             }
+
+            //Special open
+            else if (special==2) {
+                sidebar.style.bottom = "0px"; // Hide the sidebar
+            }
+
             else if (sidebar.style.bottom === "0px") {
                 sidebar.style.bottom = "-300px"; // Hide the sidebar
             }
@@ -179,6 +186,7 @@
             var input = document.getElementById('image');
             var fileName = input.files[0].name;
             document.getElementById('file-name').textContent = fileName;
+            toggleNav(2);
         }
     
         function sendFormData() {
@@ -221,7 +229,7 @@
         var loadingInterval; // Declare this outside so it can be cleared later
     
         function startLoading() {
-            toggleNav(true); // Hide the sidebar
+            toggleNav(1); // Hide the sidebar
             
             var button = document.getElementById('checkButton');
             button.innerHTML = 'Loading';

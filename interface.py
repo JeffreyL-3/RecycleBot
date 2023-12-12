@@ -10,6 +10,7 @@ def to_text(answer, object, details, prompt_tokens=0, completion_tokens=0, total
     
     #Result Code: 0 = no, 1 = maybe, 2 = yes
     if "but" in answer:
+        header += ("Is this " + object + " recyclable? " + answer + "\n")
         result_code = 1
     
     elif(answer=="No, but..." or answer=="No, probably not." or answer=="No."):

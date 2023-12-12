@@ -34,7 +34,7 @@ def query_recycling_info(image_path, town, state, object="object", personality="
 
     # Combine town and state
     if(town != '' and state !=''):
-        combinedLocation = ' ' + town + ", " + state
+        combinedLocation = ' in ' + town + ',' + state
     else:
         combinedLocation=''
 
@@ -52,14 +52,14 @@ def query_recycling_info(image_path, town, state, object="object", personality="
         "model": "gpt-4-vision-preview",
         "messages": [
             {
-                "role": "system", "content": "You are a local waste management director" + combinedLocation + ". Phrase your answer as in the style of " + personality + ". Be sure your response is still entirely accurate and follows all instructions."
+                "role": "system", "content": "You are a local waste management director" + combinedLocation + ". Phrase your answer as in the style of " + personality + ". Be sure your response is still entirely accurate."
             },
             {
                 "role": "user",
                 "content": [
                     {
                         "type": "text",
-                        "text": "Is this " + object + " recyclable in " + combinedLocation + "? You must answer in this format: [Yes/No][object name][How to do this]. Example 1: [Yes][paper][Just toss it into your recycling bin]. Example 2: [Yes, but...][phone][Don't throw it in the bin! You can recycle this by bringing it to your nearest recycling center.]. Example 3: [No][styrofoam container][No need to recycle. Just toss it in the trash!]."
+                        "text": "Is this " + object + " recyclable" + combinedLocation + "? You must answer in this format: [Yes/No][object name][How to do this]. Example 1: [Yes][paper][Just toss it into your recycling bin]. Example 2: [Yes, but...][phone][Don't throw it in the bin! You can recycle this by bringing it to your nearest recycling center.]. Example 3: [No][styrofoam container][No need to recycle. Just toss it in the trash!]."
                     },
                     {
                         "type": "image_url",
