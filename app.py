@@ -4,6 +4,8 @@ import os
 from interface import simple_output
 import key
 import shutil
+import defaults
+
 
 app = Flask(__name__)
 
@@ -50,8 +52,8 @@ def process():
                    
         town = request.form.get('town', '')
         state = request.form.get('state', '')
-        object = request.form.get('object', 'object')
-        personality = request.form.get('personality', 'a recycling expert')
+        object = request.form.get('object', defaults.getDefaultObject())
+        personality = request.form.get('personality', defaults.getDefaultPersonality())
 
         result_code, detected_object, header, details, *costOutput = simple_output(image_path, town, state, object, personality)
         # Return JSON response

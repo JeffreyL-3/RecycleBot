@@ -1,14 +1,18 @@
 import engine
+import defaults
+
 
 def simple_output(image_path, town, state, object, personality):
     answer, object, details, prompt_tokens, completion_tokens, total_tokens = recycle_check(image_path, town, state, object, personality)
     return to_text(answer, object, details, prompt_tokens, completion_tokens, total_tokens)
 
+
 def to_text(answer, object, details, prompt_tokens=0, completion_tokens=0, total_tokens=0):
     header = ""
     result_code = -1
     
-    #Result Code: 0 = no, 1 = maybe, 2 = yes
+    #Result Code: 0 = no, 1 = maybe, 2 = yes       
+
     if "but" in answer:
         header += ("Is this " + object + " recyclable? " + answer + "\n")
         result_code = 1
@@ -37,7 +41,7 @@ def to_text(answer, object, details, prompt_tokens=0, completion_tokens=0, total
 
         
 
-def recycle_check(image_path, town="Dedham", state="Massachusetts", object="", personality="an expert in recycling"):
+def recycle_check(image_path, town="", state="", object=defaults.getDefaultObject(), personality=defaults.getDefaultPersonality()):
         
     raw_response= engine.query_recycling_info(image_path, town, state, object, personality)
     print("Recycle_check: " + str(raw_response))

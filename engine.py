@@ -3,6 +3,8 @@ import base64
 import requests
 import re
 import json
+import defaults
+
 
 
 
@@ -27,8 +29,17 @@ def numTokens(response):
 def getCost(prompt_tokens, completion_tokens):
     return (prompt_tokens*0.01/1000) + (completion_tokens*0.03/1000)
 
-# Main function
-def query_recycling_info(image_path, town, state, object="object", personality="an expert in recycling"):
+# Gets recycling info 
+def query_recycling_info(image_path, town, state, object=defaults.getDefaultObject(), personality=defaults.getDefaultPersonality()):
+    
+    # Final check to force default on empty strings
+    if(object==''):
+        object = defaults.getDefaultObject()
+    if(personality==''):
+        personality = defaults.getDefaultPersonality()  
+    
+    print('Loading...')
+    print(personality)
     # OpenAI API Key
     api_key = key.getKey()
 
@@ -49,29 +60,36 @@ def query_recycling_info(image_path, town, state, object="object", personality="
 
     # Setup payload
     payload = {
-        "model": "gpt-4-vision-preview",
+        #Allows image uploads
+        "model": "gpt-4-vision-preview", 
+        
+        #Prompt
         "messages": [
             {
-                "role": "system", "content": "You are a helpful local waste management director" + combinedLocation + " helping others decide if their object is recyclable. Phrase your recycling instructions in the style of " + personality + " while maintaining complete accuracy. All answers must be in this format: [Yes/No][object name][How to do this]. Example 1: [Yes][paper][Just toss it into your recycling bin]. Example 2: [Yes, but...][phone][Don't throw it in the bin! You can recycle this by bringing it to your nearest recycling center.]. Example 3: [No][styrofoam container][No need to recycle. Just toss it in the trash!].",
+                # Most of the prompt is included here because GPT4 tends to adhere to answer format (which includes personality) better in the dedicated system role, rather than the user prompt
+                "role": "system", "content": "You are a helpful local waste management director" + combinedLocation + " helping others decide if their object is recyclable. Phrase your recycling instructions in the style of " + personality + " while maintaining complete accuracy.",
             },
             {
                 "role": "user",
                 "content": [
                     {
                         "type": "text",
-                        "text": "Is this " + object + " recyclable" + combinedLocation + "?"
+                        "text": "Is this " + object + " recyclable" + combinedLocation + "? All answers must be in this format: [Yes/No][object name][How to do this]. Example 1: [Yes][paper][Just toss it into your recycling bin]. Example 2: [Yes, but...][phone][Don't throw it in the bin! You can recycle this by bringing it to your nearest recycling center.]. Example 3: [No][styrofoam container][No need to recycle. Just toss it in the trash!].",
                     },
                     {
                         "type": "image_url",
                         "image_url": {
                             "url": f"data:image/jpeg;base64,{base64_image}",
+                            
+                            #Compresses image to optimize token usage
                             "detail":"low"
                         }
                     }
                 ]
             }
         ],
-        "max_tokens": 500
+        #Hard cap on token usage (near impossible to reach). About $0.01 - $0.03
+        "max_tokens": 1000
     }
 
     # Send request
@@ -83,9 +101,10 @@ def query_recycling_info(image_path, town, state, object="object", personality="
         return raw_response
 
     else:
+        print(str(response))
         return "Error code 11: Error in API call"
     
-
+# Parses through to find brackets. Expects [answer][object][details]
 def separate_answer_and_details(combined_response):
     print(combined_response)
     
