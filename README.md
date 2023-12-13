@@ -12,17 +12,22 @@ Note: using a .jpg or .png image is recommended. Limited file conversion is impl
 - Install dependencies
   - Run ```pip install --upgrade openai Flask requests Werkzeug```
 - Run app.py to load Recycle_Bot!
-
-## RecycleBot Features
-- Adaptive location
-- Customizable personality with high accuracy (even with absurd or malicious inputs)
-- GUI input for API key
-- Saves API key and settings
-- Robust hand-crafted prompt, keeping responses concise and helpful with minimal moderation conflicts
+## Recycle_Bot Features
+### Basic Functions
+- Upload images and receive realtime responses from GPT4
+- Adaptive location to tailor instructions to local recycling programs
+- Customizable personality with high accuracy (even with absurd or malicious parameters)
+- Robust hand-crafted prompt, keeping responses concise and helpful
 - Dynamic prompting template, avoiding hardcoded settings
-- Support for .jpg and .png images
 - Token optimization with vision API
+
+### Quality of Life Additions
+- Saves API key and settings for future use
+- GUI input for API key
+- Support for .jpg and .png images, with limited support for converting other file types
 - Popup sidebar menu for settings input
-- Simple prompt protection against malicious settings
+
+### Security protections
+- Simple prompt protection against malicious 
 - Limited error handling
 - Debugging and cost quantification system enabling token and cost tracking (currently unused to avoid cluttering the UI)
