@@ -5,7 +5,7 @@ Note: using a .jpg or .png image is recommended. Limited file conversion is impl
 
 ## Setup
 - Setup a virtual environment
-  - Run ```python -m venv openai-env``` in the main directory
+  - Run ```python3 -m venv openai-env``` in the main directory
 - After you've created a virtual environment, activate it with one of the following
     - Windows: ```openai-env\Scripts\activate```
     - Mac: ```source openai-env/bin/activate```
