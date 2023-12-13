@@ -16,8 +16,8 @@ Note: using a .jpg or .png image is recommended. Limited file conversion is impl
 ### Basic Functions
 - Upload images and receive realtime responses from GPT4
 - Adaptive location to tailor instructions to local recycling programs
-- Customizable personality with high accuracy (even with absurd or malicious parameters)
-- Robust hand-crafted prompt, keeping responses concise and helpful
+- Customizable personality with continued accuracy
+- Robust hand-crafted prompt, keeping responses concise and helpful (even with absurd or malicious parameters)
 - Dynamic prompting template, avoiding hardcoded settings
 - Token optimization with vision API
 
