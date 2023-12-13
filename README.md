@@ -14,9 +14,9 @@ Note: using a .jpg or .png image is recommended. Limited file conversion is impl
 - Run app.py to load Recycle_Bot!
 
 ## RecycleBot Features
-- Customizable location
+- Adaptive location
 - Customizable personality with high accuracy (even with absurd or malicious inputs)
-- GUI API key input
+- GUI input for API key
 - Saves API key and settings
 - Robust hand-crafted prompt, keeping responses concise and helpful with minimal moderation conflicts
 - Dynamic prompting template, avoiding hardcoded settings
