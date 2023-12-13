@@ -19,7 +19,7 @@ Note: using a .jpg or .png image is recommended. Limited file conversion is impl
 - Customizable personality with continued accuracy
 - Robust hand-crafted prompt, keeping responses concise and helpful (even with absurd or malicious parameters)
 - Dynamic prompting template, avoiding hardcoded settings
-- Token optimization with vision API
+- Vision API token optimization to ~300 per check
 
 ### Quality of Life Additions
 - Saves API key and settings for future use
@@ -30,4 +30,4 @@ Note: using a .jpg or .png image is recommended. Limited file conversion is impl
 ### Security protections
 - Simple prompt protection against malicious injection attacks 
 - Limited error handling
-- Debugging and cost quantification system enabling token and cost tracking (currently unused to avoid cluttering the UI)
+- Debugging and cost quantification system enabling token and cost tracking (currently unused to avoid UI clutter)
