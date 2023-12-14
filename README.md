@@ -31,4 +31,4 @@ Note: using a .jpg or .png image is recommended. Limited file conversion is impl
 ### Security protections
 - Simple prompt protection against malicious injection attacks 
 - Limited error handling
-- Debugging and cost quantification system enabling token and cost tracking (currently disabled to avoid UI clutter)iiiiir
+- Debugging and cost quantification system enabling token and cost tracking (currently disabled to avoid UI clutter)
