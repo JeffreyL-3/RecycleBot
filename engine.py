@@ -58,7 +58,7 @@ def query_recycling_info(image_path, town, state, object=defaults.getDefaultObje
     # Setup payload
     payload = {
         #Allows image uploads
-        "model": "gpt-4-vision-preview", 
+        "model": defaults.getDefaultModel(), 
         
         #Prompt
         "messages": [

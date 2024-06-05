@@ -6,16 +6,18 @@ Note: using a .jpg or .png image is recommended. Limited file conversion is impl
 ## Setup
 - Generate an OpenAI api key for use with Recycle_Bot
 - Setup a virtual environment
-  - Run ```python3 -m venv openai-env``` in the main directory
+  - Windows: run ```python -m venv openai-env``` in the main directory
+  - Mac: run ```python3 -m venv openai-env``` in the main directory
 - After you've created a virtual environment, activate it with one of the following
-    - Windows: ```openai-env\Scripts\activate```
-    - Mac: ```source openai-env/bin/activate```
+  - Windows: ```openai-env\Scripts\activate```
+  - Mac: ```source openai-env/bin/activate```
 - Install dependencies
   - Run ```pip install --upgrade openai Flask requests Werkzeug```
 - Run app.py to load Recycle_Bot!
 ## Recycle_Bot Features
 ### Basic Functions
-- Upload images and receive realtime responses from GPT4
+- Upload images and receive realtime responses from GPT-4 Turbo
+  - Plug-in support for other models is available by editing defaults.py
 - Adaptive location to tailor instructions to local recycling programs
 - Customizable personality with continued accuracy
 - Robust hand-crafted prompt, keeping responses concise and helpful (even with absurd or malicious parameters)
