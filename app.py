@@ -5,6 +5,7 @@ from interface import simple_output
 import key
 import shutil
 import defaults
+import time
 
 
 app = Flask(__name__)
@@ -36,9 +37,9 @@ def index():
 #Dynamic page updates
 @app.route('/process', methods=['POST'])
 def process():
+    start = time.time()
     empty_folder(app.config['UPLOAD_FOLDER'])
 
-    file = request.files['image']
     file = request.files['image']
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
@@ -56,6 +57,11 @@ def process():
         personality = request.form.get('personality', defaults.getDefaultPersonality())
 
         result_code, detected_object, header, details, *costOutput = simple_output(image_path, town, state, object, personality)
+        
+        end = time.time()
+        timeTaken= end - start
+        print("Query time: " + (str)(timeTaken) + " seconds")
+        
         # Return JSON response
         return jsonify({
             'result_code': result_code, 
@@ -64,9 +70,13 @@ def process():
             'details': details, 
             'costOutput': costOutput if costOutput else None
         })
-
     else:
+        end = time.time()
+        timeTaken= end - start
+        print("Query time: " + (str)(timeTaken) + " seconds")
+        
         return jsonify({'error': 'Invalid file format'}), 400
+    
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001)
