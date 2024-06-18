@@ -1,319 +1,48 @@
 <!doctype html>
 <html>
-<head>
-    <link href="https://fonts.cdnfonts.com/css/aquire" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="static\favicon.png">
+    <head>
+        <link href="https://fonts.cdnfonts.com/css/aquire" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/motiva-sans" rel="stylesheet">
+        <link rel="shortcut icon" type="image/x-icon" href="static/favicon.png">
+        <link rel="stylesheet" href="static/styles.css">
 
-                
-    <title> Recycle_Bot </title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column; /* Change to column for vertical layout */
-            align-items: center; /* Center align items */
-            justify-content: flex-start; /* Start content from the top */
-            min-height: 100vh;
-            margin: 0;
-            background: #111;
-            color: #fff;
-            font-family: monospace;
-        }
-        h1 {
-            font-family: 'Aquire', sans-serif;
-            font-size: 60px
-        }
-        .container {
-            text-align: center;
-            width: 100%; /* Ensure container takes the rest of the space */
-            max-width: 800px; /* Set a maximum width for the container */
-            padding: 0 20px; /* Add horizontal padding */
-            margin: auto; /* Center the container */
-        }
-        
-        button, input[type="text"], input[type="submit"], label.custom-file-upload {
-            background: #333;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            margin: 5px;
-            font-family: monospace;
-            border-radius: 5px;
-            cursor: pointer; /* Add cursor style */
-            display: inline-block;
-        }
-     
-        label.custom-file-upload:hover {
-            background-color: #444; /* Slightly darker background on hover */
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.1); /* More subtle glow */
-            transition: background-color 0.1s, box-shadow 0.1s; /* Smooth transition for the hover effect */
-        }
+                    
+        <title> Recycle_Bot </title>
+    </head>
+    <body>
 
-        button:hover {
-            background-color: #444; /* Slightly darker background on hover */
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.1); /* More subtle glow */
-            transition: background-color 0.1s, box-shadow 0.1s; /* Smooth transition for the hover effect */
-        }
-        
+        <div class="hamburger" onclick="toggleNav()">☰</div>
+        <button style="position: fixed; top: 20px; left: 100px; z-index: 2;" onclick="clearData()">Clear Data</button>
+        <div id="clearedBanner" style="display: none; position: fixed; top: 25px; left: 270px; z-index: 2; background-color: #393; color: white; padding: 10px; border-radius: 5px;">Cleared!</div>
 
-        input[type="text"] {
-            width: 300px;
-        }
-        input[type="file"] {
-            display: none; /* Hide the actual file input */
-        }
-        .file-name {
-            color: #fff;
-            margin-left: 10px;
-            font-family: monospace;
-        }
-        .sidebar {
-            width: 300px; /* Specific width */
-            height: 300px;
-            position: fixed;
-            z-index: 1;
-            bottom: 0;
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.8s;
-            padding-top: 20px;
-            left: 15%; /* Center horizontally */
-            transform: translateX(-50%); /* Adjust for centering */
-        }
-        
-        .sidebar input[type="text"] {
-            width: 80%;
-            margin-bottom: 20px;        
-        }
-        
-        .hamburger {
-            cursor: pointer;
-            padding: 10px 20px;
-            background: #333;
-            border: none;
-            color: #fff;
-            font-family: monospace;
-            border-radius: 5px;
-            margin: 5px;
-            position: fixed; /* Use fixed to keep it above other elements */
-            top: 20px;
-            left: 30px; /* Adjust position as necessary */
-            z-index: 2; /* Ensure it's above other elements */
-        }
-
-        .hamburger:hover {
-            background-color: #444; /* Slightly darker background on hover */
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.1); /* More subtle glow */
-            transition: background-color 0.1s, box-shadow 0.1s; /* Smooth transition for the hover effect */
-        }
-
-        .flex-container {
-            display: flex;
-            width: 100%;
-            justify-content: center; /* Center the content */
-            padding-top: 60px; /* Adjust padding to avoid overlap with the hamburger menu */
-        }
-        #responseHeader {
-            font-size: 20px;
-            padding-top: 10px;
-            /* Add other styling as needed */
-        }
-        
-        #responseDetails {
-            padding-top: 20px;
-            /* Style for response details if needed */
-        }
-        
-
-    </style>
-</head>
-<body>
-
-    <div class="hamburger" onclick="toggleNav()">☰</div>
-    <button style="position: fixed; top: 20px; left: 100px; z-index: 2;" onclick="clearData()">Clear Data</button>
-    <!-- Updated banner position to appear next to the button -->
-    <div id="clearedBanner" style="display: none; position: fixed; top: 25px; left: 270px; z-index: 2; background-color: #393; color: white; padding: 10px; border-radius: 5px;">Cleared!</div>
-
-    <div class="flex-container">
-        <div class="sidebar" id="mySidebar">
-            <form action="/" method="post" enctype="multipart/form-data">
-                <input type="text" name="api_key" id="api_key" required placeholder="API Key (required)"><br>
-                <input type="text" name="town" id="town" required placeholder="Town" maxlength="50"><br>
-                <input type="text" name="state" id="state" required placeholder="State" maxlength="30"><br>
-                <input type="text" name="object" id="object" required placeholder="Object" maxlength="30"><br>
-                <input type="text" name="personality" id="personality" placeholder="Personality" maxlength="30"><br>
-            </form>
+        <div class="flex-container">
+            <div class="sidebar" id="mySidebar">
+                <form action="/" method="post" enctype="multipart/form-data">
+                    <input type="text" name="api_key" id="api_key" required placeholder="API Key (required)"><br>
+                    <input type="text" name="town" id="town" required placeholder="Town" maxlength="50"><br>
+                    <input type="text" name="state" id="state" required placeholder="State" maxlength="30"><br>
+                    <input type="text" name="object" id="object" required placeholder="Object" maxlength="30"><br>
+                    <input type="text" name="personality" id="personality" placeholder="Personality" maxlength="30"><br>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <div class="container">
-        <h1>Recycle_Bot</h1>
+        <div class="container">
+            <h1>Recycle_Bot</h1>
 
-        <!-- Moved upload and check button here -->
-        <form action="/" method="post" enctype="multipart/form-data">
-            <label for="image" class="custom-file-upload">Upload Image</label>
-            <input type="file" name="image" id="image" required onchange="updateFileName()">
-            <span id="file-name" class="file-name"></span><br><br> <!-- File Name Display -->
-            <button type="button" id="checkButton" onclick="sendFormData()">Check</button>
-        </form>
+            <!-- Moved upload and check button here -->
+            <form action="/" method="post" enctype="multipart/form-data">
+                <label for="image" class="custom-file-upload">Upload Image</label>
+                <input type="file" name="image" id="image" required onchange="updateFileName()">
+                <span id="file-name" class="file-name"></span><br><br> <!-- File Name Display -->
+                <button type="button" id="checkButton" onclick="sendFormData()">Check</button>
+            </form>
 
-        <div id="result"></div>
-
+            <div id="result"></div>
+        </div>
 
         
-    </div>
+        <script src="static/script.js"></script>
 
-    <script>
-        function toggleNav(special = 0) {
-            var sidebar = document.getElementById("mySidebar");
-            //Special close
-            if (special==1) {
-                sidebar.style.bottom = "-300px"; // Hide the sidebar
-            }
-
-            //Special open
-            else if (special==2) {
-                sidebar.style.bottom = "0px"; // Hide the sidebar
-            }
-
-            else if (sidebar.style.bottom === "0px") {
-                sidebar.style.bottom = "-300px"; // Hide the sidebar
-            }
-            else {
-                sidebar.style.bottom = "0px"; // Show the sidebar
-            }
-        }
-    
-        function updateFileName() {
-            var input = document.getElementById('image');
-            var fileName = input.files[0].name;
-            document.getElementById('file-name').textContent = fileName;
-            toggleNav(2);
-        }
-    
-        function sendFormData() {
-            var formData = new FormData();
-            formData.append('image', document.getElementById('image').files[0]);
-            formData.append('town', document.getElementById('town').value);
-            formData.append('state', document.getElementById('state').value);
-            formData.append('object', document.getElementById('object').value);
-            formData.append('personality', document.getElementById('personality').value);
-            formData.append('api_key', document.getElementById('api_key').value); // Append the API key
-
-            var apiKey = document.getElementById('api_key').value;
-            localStorage.setItem('api_key', apiKey);
-            var save_town = document.getElementById('town').value;
-            localStorage.setItem('town', save_town);
-            var save_state = document.getElementById('state').value;
-            localStorage.setItem('state', save_state);
-            var save_personality = document.getElementById('personality').value;
-            localStorage.setItem('personality', save_personality);
-
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', '/process', true);
-            xhr.onreadystatechange = function () {
-                if (this.readyState === 4 && this.status === 200) {
-                    var response = JSON.parse(this.responseText);
-                    // Update the result div with the response data
-                    document.getElementById('result').innerHTML = '<div id="responseHeader">' + response.header + '</div>' +
-                                                                  '<div id="responseDetails">' + response.details + '</div>';
-                    stopLoading(); // Call this to stop loading indication
-                } else if (this.readyState === 4) {
-                    // Handle errors (e.g., server errors, network issues)
-                    document.getElementById('result').innerHTML = "Error loading results. Please try again.";
-                    stopLoading();
-                }
-            };
-            xhr.send(formData);
-            startLoading(); // Call this to start loading indication
-        }
-    
-        var loadingInterval; // Declare this outside so it can be cleared later
-    
-        function startLoading() {
-            toggleNav(1); // Hide the sidebar
-            
-            var button = document.getElementById('checkButton');
-            button.innerHTML = 'Loading';
-            var count = 0;
-    
-            loadingInterval = setInterval(function() {
-                if (count === 3) {
-                    button.innerHTML = 'Loading';
-                    count = 0;
-                } else {
-                    button.innerHTML += '.';
-                    count++;
-                }
-            }, 500); // Change text every 500 milliseconds
-        }
-    
-        // Function to stop the loading
-        function stopLoading() {
-            clearInterval(loadingInterval);
-            var button = document.getElementById('checkButton');
-            button.innerHTML = 'Check';
-        }
-    
-        function retrieveLocalStorageData() {
-            // Retrieve each value from localStorage and set it to the corresponding input field
-            var apiKey = localStorage.getItem('api_key');
-            if (apiKey) {
-                document.getElementById('api_key').value = apiKey;
-            }
-        
-            var town = localStorage.getItem('town');
-            if (town) {
-                document.getElementById('town').value = town;
-            }
-        
-            var state = localStorage.getItem('state');
-            if (state) {
-                document.getElementById('state').value = state;
-            }
-        
-            var personality = localStorage.getItem('personality');
-            if (personality) {
-                document.getElementById('personality').value = personality;
-            }
-        }
-        
-        
-        window.onload = function() {
-            var savedApiKey = localStorage.getItem('api_key');
-            if (savedApiKey) {
-                document.getElementById('api_key').value = savedApiKey;
-            }
-            var sidebar = document.getElementById("mySidebar");
-            sidebar.style.bottom = "0px"; // Or "0px" if you want it to be open initially
-            if (document.getElementById('result')) {
-                stopLoading();
-            }
-        
-            retrieveLocalStorageData(); // Retrieve and display localStorage data on window load
-        };
-
-        function clearData() {
-            localStorage.removeItem('api_key');
-            localStorage.removeItem('town');
-            localStorage.removeItem('state');
-            localStorage.removeItem('personality');
-
-            document.getElementById('api_key').value = '';
-            document.getElementById('town').value = ''; // Also clear the input field
-            document.getElementById('state').value = '';
-            document.getElementById('personality').value = '';
-
-            // Show the cleared banner
-            var banner = document.getElementById('clearedBanner');
-            banner.style.display = 'block';
-
-            // Hide the banner after a few seconds
-            setTimeout(function() {
-                banner.style.display = 'none';
-            }, 3000); // Adjust the time as needed
-        }
-    </script>
-    
-</body>
+    </body>
 </html>

@@ -1,0 +1,116 @@
+
+body {
+    display: flex;
+    flex-direction: column; /* Change to column for vertical layout */
+    align-items: center; /* Center align items */
+    justify-content: flex-start; /* Start content from the top */
+    min-height: 100vh;
+    margin: 0;
+    background: #111;
+    color: #fff;
+    font-family: monospace;
+}
+h1 {
+    font-family: 'Aquire', sans-serif;
+    font-size: 60px
+}
+.container {
+    text-align: center;
+    width: 100%; /* Ensure container takes the rest of the space */
+    max-width: 800px; /* Set a maximum width for the container */
+    padding: 0 20px; /* Add horizontal padding */
+    margin: auto; /* Center the container */
+}
+
+button, input[type="text"], input[type="submit"], label.custom-file-upload {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    font-family: monospace;
+    border-radius: 5px;
+    cursor: pointer; /* Add cursor style */
+    display: inline-block;
+}
+
+label.custom-file-upload:hover {
+    background-color: #444; /* Slightly darker background on hover */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1); /* More subtle glow */
+    transition: background-color 0.1s, box-shadow 0.1s; /* Smooth transition for the hover effect */
+}
+
+button:hover {
+    background-color: #444; /* Slightly darker background on hover */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1); /* More subtle glow */
+    transition: background-color 0.1s, box-shadow 0.1s; /* Smooth transition for the hover effect */
+}
+
+
+input[type="text"] {
+    width: 300px;
+}
+input[type="file"] {
+    display: none; /* Hide the actual file input */
+}
+.file-name {
+    color: #fff;
+    margin-left: 10px;
+    font-family: monospace;
+}
+.sidebar {
+    width: 300px; /* Specific width */
+    height: 320px;
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.8s;
+    padding-top: 20px;
+    left: 15%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for centering */
+}
+
+.sidebar input[type="text"] {
+    width: 80%;
+    margin-bottom: 20px;        
+}
+
+.hamburger {
+    cursor: pointer;
+    padding: 10px 20px;
+    background: #333;
+    border: none;
+    color: #fff;
+    font-family: monospace;
+    border-radius: 5px;
+    margin: 5px;
+    position: fixed; /* Use fixed to keep it above other elements */
+    top: 20px;
+    left: 30px; /* Adjust position as necessary */
+    z-index: 2; /* Ensure it's above other elements */
+}
+
+.hamburger:hover {
+    background-color: #444; /* Slightly darker background on hover */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1); /* More subtle glow */
+    transition: background-color 0.1s, box-shadow 0.1s; /* Smooth transition for the hover effect */
+}
+
+.flex-container {
+    display: flex;
+    width: 100%;
+    justify-content: center; /* Center the content */
+    padding-top: 60px; /* Adjust padding to avoid overlap with the hamburger menu */
+}
+#responseHeader {
+    font-size: 20px;
+    padding-top: 10px;
+    /* Add other styling as needed */
+}
+
+#responseDetails {
+    padding-top: 20px;
+    /* Style for response details if needed */
+}
